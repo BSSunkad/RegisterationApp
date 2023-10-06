@@ -28,7 +28,7 @@ public class UserController {
 		log.info("request of registerDto : " + registerDto);
 		String register = userService.register(registerDto);
 		log.info("response from register service : " + register);
-		log.info("response from register service : " + register);
+		
 		log.info("response from register service : " + register);
 		return new ResponseEntity<String>(register, HttpStatus.OK);
 
