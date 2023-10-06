@@ -19,10 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class UserController {
 
-	@Autowired  //asbhk
+	@Autowired  
 	private UserService userService;
 
-	// abhishek
+	// abhishek created git repository
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
 		log.info("In register-app Register started");
