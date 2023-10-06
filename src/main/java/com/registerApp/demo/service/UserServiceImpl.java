@@ -47,6 +47,9 @@ public class UserServiceImpl implements UserService {
 		user.setOtp(otp);
 		user.setOtpGenLocalDateTime(LocalDateTime.now());
 		userRepository.save(user);
+
+		log.info("New user is created as " + user);
+
 		return "User registration successful";
 	}
 
@@ -55,13 +58,16 @@ public class UserServiceImpl implements UserService {
 		log.info("In user implementation User varification");
 		User user = userRepository.findByEmail(email)
 				.orElseThrow(() -> new RuntimeException("User not found with this email :" + email));
+
+		log.info("In user implementation user found by findByEmail is " + email + " " + user);
+
 		if (user.getOtp().equals(otp)
 				&& Duration.between(user.getOtpGenLocalDateTime(), LocalDateTime.now()).getSeconds() < (5 * 60)) {
 			user.setActive(true);
 			userRepository.save(user);
 			return "Otp varifies.. You can login";
 		}
-		
+
 		return "Please regenerate otp and try again";
 	}
 
@@ -86,12 +92,11 @@ public class UserServiceImpl implements UserService {
 		log.info("In service implementation user ligin");
 		User user = userRepository.findByEmail(loginDto.getEmail())
 				.orElseThrow(() -> new RuntimeException("User not found for this email : " + loginDto.getEmail()));
-		if(!loginDto.getPassword().equals(user.getPassword())) {
+		if (!loginDto.getPassword().equals(user.getPassword())) {
 			return "Password is incorrect";
-		}else if(!user.isActive()) {
+		} else if (!user.isActive()) {
 			return "User is not in active state";
 		}
 		return "Login successful";
 	}
-
 }

@@ -12,12 +12,10 @@ public class OtpUtil {
 		int randomNumber = random.nextInt(999999);
 		String output = Integer.toString(randomNumber);
 		
-		// if 1234
+		// if 1234 output will be 001234
 		while (output.length() < 6) {
 			output = "0" + output;
 		}
 		return output;
-		// output will be 001234
 	}
-	
 }

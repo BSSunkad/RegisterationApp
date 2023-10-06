@@ -10,5 +10,4 @@ public class RegisterAppApplication {
 		SpringApplication.run(RegisterAppApplication.class, args);
 		System.out.println("Application Started");
 	}
-
 }

@@ -1,6 +1,5 @@
 package com.registerApp.demo.repository;
 
-import java.lang.annotation.Native;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;

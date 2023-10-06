@@ -9,7 +9,6 @@ spring:
       ddl-auto: update
     generate-ddl: true
     show-sql: true
-    
   mail:  
    port: 587
    host: smtp.gmail.com
